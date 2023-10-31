@@ -1,0 +1,69 @@
+#para implementar o bot
+#coloque uma biblioteca de seu gosto aqui
+
+#informação para contato
+nome = input(print("Digite seu nome completo:"))
+celular = input(print("Digite seu  número de celular:"))
+
+#informação para retirada
+endereço = input(print("Digite seu endereço:"))
+
+
+# Dicionário de itens do cardápio
+cardapio = {
+    'pizza_mussarela': 25.00,
+    'pizza_calabresa': 28.00,
+    'esfiha_carne': 5.00,
+    'esfiha_queijo': 4.50
+    # Coloque item que desejar
+}
+
+# Função para exibir o cardápio
+def exibir_cardapio():
+    print("==== Cardápio ====")
+    for item, preco in cardapio.items():
+        print(f"{item.capitalize()}: R${preco:.2f}")
+
+# Função para calcular a soma dos itens selecionados
+def somar_itens(itens_selecionados):
+    total = 0
+    for item in itens_selecionados:
+        if item in cardapio:
+            total += cardapio[item]
+    return total
+
+# Exemplo de uso
+exibir_cardapio()
+
+# Solicitando ao usuário a seleção dos itens
+itens_selecionados = []
+while True:
+    item = input("Selecione um item (ou 'sair' para finalizar): ")
+    if item == 'sair':
+        break
+    elif item in cardapio:
+        itens_selecionados.append(item)
+    else:
+        print("Item inválido!")
+
+# Calculando o total e exibindo o resultado
+total = somar_itens(itens_selecionados)
+print(f"Total: R${total:.2f}")
+
+# Mostrando a forma de pagamento e calculando o troco
+pagamento = input("Qual a forma de pagamento? (dinheiro ou cartao) ")
+
+if pagamento == "dinheiro":
+    valor_pago = float(input("Quanto dinheiro você vai dar? "))
+    troco = valor_pago - total
+    print("Seu troco é de R$ %.2f" % troco)
+elif pagamento == "cartao":
+    print("Levaremos a maquininha até você!")
+else:
+    print("Forma de pagamento inválida.")
+     
+ # informação total
+print("Pedido feito com sucesso")
+print('=========================')
+print('Obrigado(a) e volte sempre !!')
+print('Lembrando que; seu pedido sairá em torno de 55min')
